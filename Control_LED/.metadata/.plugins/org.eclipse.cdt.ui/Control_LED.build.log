@@ -1,0 +1,11 @@
+11:06:54 **** Incremental Build of configuration Debug_RAM for project Control_LED ****
+make -j12 all 
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley Control_LED.elf
+   text	   data	    bss	    dec	    hex	filename
+   4244	   1073	   2088	   7405	   1ced	Control_LED.elf
+Finished building: Control_LED.siz
+ 
+
+11:06:54 Build Finished (took 216ms)
+

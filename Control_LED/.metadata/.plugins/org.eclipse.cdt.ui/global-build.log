@@ -1,0 +1,26 @@
+11:06:31 **** Incremental Build of configuration Debug_RAM for project Control_LED ****
+make -j12 all 
+Building file: ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/clock_init.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Control_LED.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Control_LED.elf" "@Control_LED.args"   
+Finished building target: Control_LED.elf
+ 
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley Control_LED.elf
+   text	   data	    bss	    dec	    hex	filename
+   4244	   1073	   2088	   7405	   1ced	Control_LED.elf
+Finished building: Control_LED.siz
+ 
+11:06:54 **** Incremental Build of configuration Debug_RAM for project Control_LED ****
+make -j12 all 
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley Control_LED.elf
+   text	   data	    bss	    dec	    hex	filename
+   4244	   1073	   2088	   7405	   1ced	Control_LED.elf
+Finished building: Control_LED.siz
+ 

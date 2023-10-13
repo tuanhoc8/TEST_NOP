@@ -1,0 +1,43 @@
+#include "init.h"
+
+static volatile uint32_t timer = 0;
+
+void init_lpit(void)
+{
+	LPIT_T->MCR |= (0x01 << 0);
+	LPIT_T->MCR |= (0x01 << 3);
+	LPIT_T->TCTRL0 &= ~(0x03u << 2);
+	LPIT_T->TCTRL1 &= ~(0x03u << 2);
+	LPIT_T->MIER |= (1 << 0);
+	LPIT_T->MIER |= (1 << 1);
+	
+	NVIC->ISER[1] |= (1U << 16);
+	NVIC->ISER[1] |= (1U << 17);
+	
+	LPIT_T->TVAL0 = (20000000 / 1000) - 1;
+	LPIT_T->TVAL1 = (20000000 / 2) - 1;
+	
+	LPIT_T->TCTRL1 |= (1 << 0);
+}
+
+void LPIT0_Ch0_IRQHandler(void)
+{
+	LPIT_T->MSR |= (1 << 0);
+	timer--;
+}
+
+void LPIT0_Ch1_IRQHandler(void)
+{
+	LPIT_T->MSR |= (1 << 1);
+	sprintf(Data_TX, "Counter = %d\n", counter);
+	send_uart(Data_TX);
+}
+
+void delay_ms(uint32_t ms)
+{
+	LPIT_T->TCTRL0 |= (1 << 0);
+	timer = ms;
+	while(timer);
+	while(button2_is_pressed);
+	LPIT_T->TCTRL0 &= ~(1u << 0);
+}

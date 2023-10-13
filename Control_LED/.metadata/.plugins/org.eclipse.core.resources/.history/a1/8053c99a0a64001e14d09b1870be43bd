@@ -1,0 +1,25 @@
+#include "init.h"
+
+void blinkLed(void)__attribute__((section(".flash_blinkled")));
+void blinkLed(void)
+{
+	for(;;)
+	{
+		GPIOD->PDOR = (1 << 0) | (1 << 16);
+		delay_ms(DELAY);
+		GPIOD->PDOR = (1 << 0) | (1 << 15);
+		delay_ms(DELAY);
+		GPIOD->PDOR = (1 << 15) | (1 << 16);
+		delay_ms(DELAY);
+	}
+}
+
+int main(void)
+{
+	init_clock();
+	init_gpio();
+	init_lpit();
+	init_lpuart1();
+
+	blinkLed();
+}

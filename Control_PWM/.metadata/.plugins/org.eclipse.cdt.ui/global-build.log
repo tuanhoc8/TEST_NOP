@@ -1,0 +1,16 @@
+15:55:25 **** Incremental Build of configuration Debug_RAM for project Control_PWM ****
+make -j12 all 
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley Control_PWM.elf
+   text	   data	    bss	    dec	    hex	filename
+   6828	   1072	   2100	  10000	   2710	Control_PWM.elf
+Finished building: Control_PWM.siz
+ 
+15:55:31 **** Incremental Build of configuration Debug_RAM for project Control_PWM ****
+make -j12 all 
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley Control_PWM.elf
+   text	   data	    bss	    dec	    hex	filename
+   6828	   1072	   2100	  10000	   2710	Control_PWM.elf
+Finished building: Control_PWM.siz
+ 
